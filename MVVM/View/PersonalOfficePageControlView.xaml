@@ -1,0 +1,823 @@
+﻿<UserControl
+    x:Class="A_journey_through_miniature_Uzhhorod.MVVM.View.PersonalOfficePageControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+    xmlns:loc="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model"
+    xmlns:local="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="10,20,0,10"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{loc:Loc PersonalOfficeEditTitle}" />
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource titleColor1}"
+                        Text="{loc:Loc PersonalOfficeInfoTitle}" />
+
+                    <ComboBox
+                        Grid.Column="1"
+                        MaxWidth="200"
+                        Margin="20,0,0,0"
+                        Background="{StaticResource panelOverColor}"
+                        ItemsSource="{Binding DisplayOptions}"
+                        SelectedItem="{Binding SelectedDisplayOption, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource ComboBoxStyle}" />
+                </Grid>
+
+                <Border
+                    Grid.Row="1"
+                    Margin="20"
+                    Padding="10"
+                    Background="{StaticResource panelOverColor}"
+                    BorderBrush="{StaticResource color11}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <!--  Аватар  -->
+                            <ColumnDefinition Width="*" />
+                            <!--  Інформація  -->
+                        </Grid.ColumnDefinitions>
+
+                        <!--  Аватар  -->
+                        <StackPanel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalAlignment="Center">
+                            <Button
+                                x:Name="AvatarButton"
+                                Width="170"
+                                Height="170"
+                                Margin="10,10,-10,-10"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Command="{Binding ChangeAvatarCommand}"
+                                Cursor="Hand"
+                                ToolTip="{loc:Loc AvatarButtonToolTip}">
+                                <!--  Додаємо команду для зміни аватара  -->
+
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Ellipse
+                                                Width="170"
+                                                Height="170"
+                                                Stroke="{StaticResource color11}"
+                                                StrokeThickness="1">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush ImageSource="{Binding AvatarPath}" Stretch="UniformToFill" />
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                        </StackPanel>
+
+                        <!--  Інформація  -->
+                        <StackPanel
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="40,10,40,10">
+                            <TextBlock
+                                FontFamily="Montserrat"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                Foreground="DarkGray"
+                                Text="{loc:Loc Username}" />
+                            <TextBox
+                                x:Name="TextBoxUser"
+                                Height="28"
+                                Margin="0,5,0,0"
+                                Padding="25,0,0,0"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="DarkGray"
+                                BorderThickness="0,0,0,2"
+                                CaretBrush="LightGray"
+                                FontFamily="Montserrat"
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Foreground="White"
+                                Text="{Binding NewUsername, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.Background>
+                                    <ImageBrush
+                                        AlignmentX="Left"
+                                        ImageSource="/Icons/user.png"
+                                        Stretch="None" />
+                                </TextBox.Background>
+                            </TextBox>
+
+                            <TextBlock
+                                Margin="0,15,0,0"
+                                FontFamily="Montserrat"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                Foreground="DarkGray"
+                                Text="{loc:Loc PersonalOfficeOldPassword}" />
+                            <PasswordBox
+                                x:Name="OldPasswordBox"
+                                Height="28"
+                                Margin="0,5,0,0"
+                                Padding="25,0,0,0"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="DarkGray"
+                                BorderThickness="0,0,0,2"
+                                CaretBrush="LightGray"
+                                FontFamily="Montserrat"
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Foreground="White"
+                                PasswordChanged="OldPasswordBox_PasswordChanged">
+                                <PasswordBox.Background>
+                                    <ImageBrush
+                                        AlignmentX="Left"
+                                        ImageSource="/Icons/key.png"
+                                        Stretch="None" />
+                                </PasswordBox.Background>
+                            </PasswordBox>
+
+                            <TextBlock
+                                Margin="0,15,0,0"
+                                FontFamily="Montserrat"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                Foreground="DarkGray"
+                                Text="{loc:Loc PersonalOfficeNewPassword}" />
+                            <PasswordBox
+                                x:Name="NewPasswordBox"
+                                Height="28"
+                                Margin="0,5,0,0"
+                                Padding="25,0,0,0"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="DarkGray"
+                                BorderThickness="0,0,0,2"
+                                CaretBrush="LightGray"
+                                FontFamily="Montserrat"
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Foreground="White"
+                                PasswordChanged="NewPasswordBox_PasswordChanged">
+                                <PasswordBox.Background>
+                                    <ImageBrush
+                                        AlignmentX="Left"
+                                        ImageSource="/Icons/key.png"
+                                        Stretch="None" />
+                                </PasswordBox.Background>
+                            </PasswordBox>
+
+                            <TextBlock
+                                Margin="0,15,0,0"
+                                FontFamily="Montserrat"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                Foreground="DarkGray"
+                                Text="{loc:Loc Email}" />
+                            <TextBox
+                                x:Name="TextBoxMail"
+                                Height="28"
+                                Margin="0,5,0,0"
+                                Padding="25,0,0,0"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="DarkGray"
+                                BorderThickness="0,0,0,2"
+                                CaretBrush="LightGray"
+                                FontFamily="Montserrat"
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Foreground="White"
+                                Text="{Binding NewEmail, UpdateSourceTrigger=PropertyChanged}"
+                                ToolTip="Приклад: ВашаАдреса@gmail.com">
+                                <TextBox.Background>
+                                    <ImageBrush
+                                        AlignmentX="Left"
+                                        ImageSource="/Icons/mail-icon.png"
+                                        Stretch="None" />
+                                </TextBox.Background>
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Margin="10"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                            <Button
+                                Command="{Binding UpdateProfileCommand}"
+                                Content="{loc:Loc PersonalOfficeButtonSave}"
+                                Foreground="{StaticResource titleColor1}"
+                                Style="{StaticResource button}" />
+                            <Button
+                                Margin="10,0,0,0"
+                                Command="{Binding DataContext.LogoutCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                Content="{loc:Loc PersonalOfficeButtonLeave}"
+                                Foreground="{StaticResource titleColor1}"
+                                Style="{StaticResource button}" />
+                            <Button
+                                Margin="10,0,0,0"
+                                Command="{Binding DataContext.DeleteAccountCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                Content="{loc:Loc PersonalOfficeButtonDelete}"
+                                Foreground="{StaticResource titleColor1}"
+                                Style="{StaticResource button}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="3">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <!--  Відгуки  -->
+                            <Grid Grid.Row="4" Visibility="{Binding IsReviewSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border
+                                    Grid.Row="0"
+                                    Margin="20"
+                                    Padding="10"
+                                    Background="{StaticResource panelOverColor}"
+                                    BorderBrush="{StaticResource color11}"
+                                    BorderThickness="2"
+                                    CornerRadius="10">
+                                    <StackPanel>
+                                        <Grid Margin="0,0,0,10" HorizontalAlignment="Stretch">
+                                            <TextBlock
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{loc:Loc PersonalOfficeYourReviews}" />
+                                            <Button
+                                                Margin="10"
+                                                HorizontalAlignment="Right"
+                                                Command="{Binding ClearAllReviewsCommand}"
+                                                Content="{loc:Loc PersonalOfficeButtonClearReviews}"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Style="{StaticResource button}"
+                                                ToolTip="{loc:Loc PersonalOfficeClearReviewsToolTip}" />
+                                        </Grid>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <StackPanel
+                                                Grid.Row="1"
+                                                Margin="0,0,0,-10"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Orientation="Horizontal">
+                                                <StackPanel.Style>
+                                                    <Style TargetType="StackPanel">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserReviews.Count}" Value="0">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </StackPanel.Style>
+                                                <Button
+                                                    Margin="10"
+                                                    Command="{Binding PrevReviewPageCommand}"
+                                                    Style="{StaticResource IconButton}"
+                                                    Tag="{StaticResource color11}"
+                                                    ToolTip="{loc:Loc PrewPageToolTip}">
+                                                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource iconButtonIcon}" />
+                                                </Button>
+                                                <TextBlock
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding CurrentReviewPage}" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text=" / " />
+                                                <TextBlock
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding TotalReviewPages}" />
+                                                <Button
+                                                    Margin="10"
+                                                    Command="{Binding NextReviewPageCommand}"
+                                                    Style="{StaticResource IconButton}"
+                                                    Tag="{StaticResource color11}"
+                                                    ToolTip="{loc:Loc NextPageToolTip}">
+                                                    <fa:IconImage Icon="AngleRight" Style="{StaticResource iconButtonIcon}" />
+                                                </Button>
+                                            </StackPanel>
+
+                                            <ScrollViewer
+                                                Grid.Row="0"
+                                                Height="300"
+                                                VerticalScrollBarVisibility="Auto">
+                                                <ItemsControl ItemsSource="{Binding UserReviews}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border
+                                                                Margin="5"
+                                                                Padding="10"
+                                                                BorderBrush="{StaticResource color11}"
+                                                                BorderThickness="1"
+                                                                CornerRadius="10">
+
+                                                                <Grid>
+                                                                    <StackPanel HorizontalAlignment="Left">
+
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock
+                                                                                FontSize="16"
+                                                                                FontWeight="Bold"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding MiniatureName}" />
+
+                                                                            <TextBlock
+                                                                                Margin="10,3,0,0"
+                                                                                FontSize="13"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding CreatedAt, StringFormat=' {0:dd.MM.yyyy HH:mm}'}" />
+                                                                        </StackPanel>
+
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock
+                                                                                FontSize="14"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{loc:Loc PersonalOfficeTextBlockRate}" />
+                                                                            <TextBlock
+                                                                                FontSize="14"
+                                                                                Foreground="{StaticResource color6}"
+                                                                                Text="{Binding Rating}" />
+                                                                            <fa:IconImage
+                                                                                Width="18"
+                                                                                Height="18"
+                                                                                Margin="3,0,0,0"
+                                                                                Foreground="{StaticResource color6}"
+                                                                                Icon="Star"
+                                                                                Style="{StaticResource iconButtonIcon}" />
+                                                                        </StackPanel>
+
+
+                                                                        <TextBlock
+                                                                            FontSize="15"
+                                                                            Foreground="{StaticResource titleColor1}"
+                                                                            Text="{Binding Comment}"
+                                                                            TextWrapping="Wrap" />
+                                                                    </StackPanel>
+
+                                                                    <Button
+                                                                        x:Name="DeleteRevievButton"
+                                                                        Margin="15"
+                                                                        HorizontalAlignment="Right"
+                                                                        Command="{Binding DataContext.DeleteReviewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Style="{StaticResource IconButton}"
+                                                                        Tag="#c78c54"
+                                                                        ToolTip="{loc:Loc PersonalOfficeButtonDeleteReview}">
+                                                                        <fa:IconImage
+                                                                            x:Name="MenuIcon"
+                                                                            Icon="Trash"
+                                                                            Style="{StaticResource iconButtonIcon}" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </ScrollViewer>
+
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{loc:Loc PersonalOfficeDontHaveReviews}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserReviews.Count}" Value="0">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <!--  Історія  -->
+                            <Grid Grid.Row="4" Visibility="{Binding IsActivitySelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border
+                                    Grid.Row="1"
+                                    Margin="20"
+                                    Padding="10"
+                                    Background="{StaticResource panelOverColor}"
+                                    BorderBrush="{StaticResource color11}"
+                                    BorderThickness="2"
+                                    CornerRadius="10">
+
+                                    <StackPanel>
+                                        <Grid Margin="0,0,0,10" HorizontalAlignment="Stretch">
+                                            <TextBlock
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{loc:Loc PersonalOfficeTextBlockHistoryTitle}" />
+                                            <ComboBox
+                                                Width="200"
+                                                Margin="10"
+                                                ItemsSource="{Binding ActivityFilters}"
+                                                SelectedItem="{Binding SelectedFilter, UpdateSourceTrigger=PropertyChanged}"
+                                                Style="{StaticResource ComboBoxStyle}" />
+                                            <Button
+                                                Margin="10"
+                                                HorizontalAlignment="Right"
+                                                Command="{Binding ClearHistoryCommand}"
+                                                Content="{loc:Loc PersonalOfficeButtonClearHistory}"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Style="{StaticResource button}"
+                                                ToolTip="{loc:Loc POButtonClearHistoryToolTip}" />
+                                        </Grid>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <StackPanel
+                                                Grid.Row="1"
+                                                Margin="0,0,0,-10"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Orientation="Horizontal">
+                                                <StackPanel.Style>
+                                                    <Style TargetType="StackPanel">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserActivities.Count}" Value="0">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </StackPanel.Style>
+                                                <Button
+                                                    Margin="10"
+                                                    Command="{Binding PrevActivityPageCommand}"
+                                                    Style="{StaticResource IconButton}"
+                                                    Tag="{StaticResource color11}"
+                                                    ToolTip="{loc:Loc PrewPageToolTip}">
+                                                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource iconButtonIcon}" />
+                                                </Button>
+                                                <TextBlock
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding CurrentActivityPage}" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text=" / " />
+                                                <TextBlock
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding TotalActivityPages}" />
+                                                <Button
+                                                    Margin="10"
+                                                    Command="{Binding NextActivityPageCommand}"
+                                                    Style="{StaticResource IconButton}"
+                                                    Tag="{StaticResource color11}"
+                                                    ToolTip="{loc:Loc NextPageToolTip}">
+                                                    <fa:IconImage Icon="AngleRight" Style="{StaticResource iconButtonIcon}" />
+                                                </Button>
+                                            </StackPanel>
+
+                                            <ScrollViewer
+                                                Grid.Row="0"
+                                                Height="300"
+                                                VerticalScrollBarVisibility="Auto">
+                                                <ItemsControl ItemsSource="{Binding UserActivities}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border
+                                                                Margin="5"
+                                                                Padding="10"
+                                                                BorderBrush="{StaticResource color11}"
+                                                                BorderThickness="1"
+                                                                CornerRadius="10">
+                                                                <Grid>
+                                                                    <StackPanel>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock
+                                                                                FontSize="16"
+                                                                                FontWeight="Bold"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding Action}" />
+                                                                            <TextBlock
+                                                                                Margin="10,3,0,0"
+                                                                                FontSize="13"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding Timestamp, StringFormat=' {0:dd.MM.yyyy HH:mm}'}" />
+                                                                        </StackPanel>
+                                                                        <TextBlock
+                                                                            FontSize="15"
+                                                                            Foreground="{StaticResource titleColor1}"
+                                                                            Text="{Binding Details}"
+                                                                            TextWrapping="Wrap" />
+                                                                    </StackPanel>
+
+                                                                    <Button
+                                                                        x:Name="DeleteHistoryButton"
+                                                                        Margin="15"
+                                                                        HorizontalAlignment="Right"
+                                                                        Command="{Binding DataContext.DeleteSingleActivityCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Style="{StaticResource IconButton}"
+                                                                        Tag="#c78c54"
+                                                                        ToolTip="{loc:Loc PersonalOfficeButtonDeleteRecord}">
+                                                                        <fa:IconImage
+                                                                            x:Name="MenuIcon"
+                                                                            Icon="Trash"
+                                                                            Style="{StaticResource iconButtonIcon}" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </ScrollViewer>
+
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{loc:Loc PersonalOfficeDontHaveHistory}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserActivities.Count}" Value="0">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <!--  Зворотній зв'язок  -->
+                            <Grid Grid.Row="4" Visibility="{Binding IsFeedbackSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Border
+                                    Margin="20"
+                                    Padding="10"
+                                    Background="{StaticResource panelOverColor}"
+                                    BorderBrush="{StaticResource color11}"
+                                    BorderThickness="2"
+                                    CornerRadius="10">
+                                    <StackPanel>
+                                        <Grid Margin="0,0,0,10" HorizontalAlignment="Stretch">
+                                            <TextBlock
+                                                Margin="0,20,0,20"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{loc:Loc PersonalOfficeFeedbackTitle}" />
+                                        </Grid>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <ScrollViewer
+                                                Grid.Row="0"
+                                                Height="300"
+                                                VerticalScrollBarVisibility="Auto">
+                                                <ItemsControl ItemsSource="{Binding UserFeedbacks}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border
+                                                                Margin="5"
+                                                                Padding="10"
+                                                                BorderBrush="{StaticResource color11}"
+                                                                BorderThickness="1"
+                                                                CornerRadius="10">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <!--  Вміст  -->
+                                                                    <StackPanel Grid.Column="0">
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <TextBlock
+                                                                                FontSize="16"
+                                                                                FontWeight="Bold"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding Username}" />
+                                                                            <TextBlock
+                                                                                Margin="10,3,0,0"
+                                                                                FontSize="13"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding SentAt, StringFormat=' {0:dd.MM.yyyy HH:mm}'}" />
+                                                                        </StackPanel>
+                                                                        <TextBlock
+                                                                            FontSize="14"
+                                                                            Foreground="Gray"
+                                                                            Text="{Binding Email}" />
+                                                                        <TextBlock
+                                                                            FontSize="14"
+                                                                            FontWeight="SemiBold"
+                                                                            Foreground="{StaticResource titleColor1}"
+                                                                            Text="{Binding Category}" />
+                                                                        <TextBlock
+                                                                            FontSize="15"
+                                                                            Foreground="{StaticResource titleColor1}"
+                                                                            Text="{Binding Message}"
+                                                                            TextWrapping="Wrap" />
+
+                                                                        <!--  Відповідь адміністратора  -->
+                                                                        <Expander
+                                                                            Margin="0,10,0,0"
+                                                                            Background="Transparent"
+                                                                            FontSize="13"
+                                                                            FontWeight="Bold"
+                                                                            Foreground="{StaticResource titleColor1}"
+                                                                            Header="{loc:Loc AdminResponse}"
+                                                                            Visibility="{Binding AdminResponse, Converter={StaticResource NullToVisibilityConverter}}">
+                                                                            <TextBlock
+                                                                                Margin="5,7,0,0"
+                                                                                FontSize="13"
+                                                                                Foreground="{StaticResource titleColor1}"
+                                                                                Text="{Binding AdminResponse}"
+                                                                                TextWrapping="Wrap" />
+                                                                        </Expander>
+                                                                    </StackPanel>
+
+                                                                    <!--  Кнопка видалення  -->
+                                                                    <Button
+                                                                        Grid.Column="1"
+                                                                        Margin="15,0,0,0"
+                                                                        VerticalAlignment="Center"
+                                                                        Command="{Binding DataContext.DeleteFeedbackCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Style="{StaticResource IconButton}"
+                                                                        Tag="{StaticResource color11}"
+                                                                        ToolTip="{loc:Loc PersonalOfficeButtonDeleteFeedback}">
+                                                                        <fa:IconImage Icon="Trash" Style="{StaticResource iconButtonIcon}" />
+                                                                    </Button>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </ScrollViewer>
+
+                                            <!--  Пагінація  -->
+                                            <StackPanel
+                                                Grid.Row="1"
+                                                Margin="0,0,0,-10"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                Orientation="Horizontal">
+                                                <StackPanel.Style>
+                                                    <Style TargetType="StackPanel">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserFeedbacks.Count}" Value="0">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </StackPanel.Style>
+                                                <Button
+                                                    Margin="10"
+                                                    Command="{Binding PrevFeedbackPageCommand}"
+                                                    Style="{StaticResource IconButton}"
+                                                    Tag="{StaticResource color11}"
+                                                    ToolTip="{loc:Loc PrewPageToolTip}">
+                                                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource iconButtonIcon}" />
+                                                </Button>
+                                                <TextBlock
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding CurrentFeedbackPage}" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text=" / " />
+                                                <TextBlock
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding TotalFeedbackPages}" />
+                                                <Button
+                                                    Margin="10"
+                                                    Command="{Binding NextFeedbackPageCommand}"
+                                                    Style="{StaticResource IconButton}"
+                                                    Tag="{StaticResource color11}"
+                                                    ToolTip="{loc:Loc NextPageToolTip}">
+                                                    <fa:IconImage Icon="AngleRight" Style="{StaticResource iconButtonIcon}" />
+                                                </Button>
+                                            </StackPanel>
+
+                                            <!--  Повідомлення про відсутність  -->
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{loc:Loc PersonalOfficeDontHaveFeedbacks}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserFeedbacks.Count}" Value="0">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

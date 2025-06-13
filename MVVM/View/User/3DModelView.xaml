@@ -1,0 +1,135 @@
+﻿<Window
+    x:Class="A_journey_through_miniature_Uzhhorod.MVVM.View._3DModelView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:h="http://helix-toolkit.org/wpf"
+    xmlns:local="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="A_journey_through_miniature_Uzhhorod"
+    Width="800"
+    Height="450"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Border
+        BorderBrush="{StaticResource color11}"
+        BorderThickness="2"
+        CornerRadius="12">
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                <GradientStop Offset="1" Color="{StaticResource primaryBackColor1}" />
+                <GradientStop Offset="0.25" Color="{StaticResource primaryBackColor2}" />
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--  Панель заголовка  -->
+            <Grid
+                Grid.Row="0"
+                Height="35"
+                MouseLeftButtonDown="DragWindow">
+                <TextBlock
+                    Margin="15,0,0,0"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="Перегляд 3D моделі" />
+                <Button
+                    x:Name="ButtonClose"
+                    Grid.Column="2"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Right"
+                    Background="{StaticResource buttonClose}"
+                    BorderThickness="0"
+                    Click="ButtonClose_Click"
+                    Content="X"
+                    Cursor="Hand"
+                    FontFamily="Montserrat"
+                    FontSize="12"
+                    Foreground="White"
+                    Style="{StaticResource ControlBarButton2}" />
+            </Grid>
+
+            <Ellipse
+                Grid.Row="1"
+                Width="170"
+                Height="170"
+                Margin="228,0,0,36"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Fill="White"
+                Opacity="0.05" />
+
+            <Polygon
+                Grid.Row="1"
+                Margin="-93,-258,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Fill="White"
+                Opacity="0.04"
+                Points="80,80 350,250 100,400" />
+
+            <Ellipse
+                Grid.Row="1"
+                Width="200"
+                Height="200"
+                Margin="0,42,-98,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Opacity="0.3">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Offset="0.2" Color="Goldenrod" />
+                        <GradientStop Offset="1" Color="Transparent" />
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Grid
+                x:Name="LoadingOverlay"
+                Grid.Row="1"
+                Panel.ZIndex="99"
+                Background="#AA000000"
+                Visibility="Collapsed">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ProgressBar
+                        Width="200"
+                        Height="20"
+                        IsIndeterminate="True" />
+                    <TextBlock
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        Text="Завантаження моделі..." />
+                </StackPanel>
+            </Grid>
+
+
+            <!--  Головний контейнер  -->
+            <h:HelixViewport3D Name="viewPort" Grid.Row="1">
+                <!--  Камера  -->
+                <h:HelixViewport3D.Camera>
+                    <PerspectiveCamera
+                        x:Name="mainCamera"
+                        FieldOfView="45"
+                        LookDirection="0 0 -1"
+                        Position="0 0 10"
+                        UpDirection="0 1 0" />
+                </h:HelixViewport3D.Camera>
+
+                <!--  Освітлення  -->
+                <h:SunLight />
+            </h:HelixViewport3D>
+        </Grid>
+    </Border>
+</Window>

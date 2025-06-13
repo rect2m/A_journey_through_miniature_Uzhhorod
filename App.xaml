@@ -1,0 +1,24 @@
+﻿<Application
+    x:Class="A_journey_through_miniature_Uzhhorod.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model"
+    StartupUri="MVVM/View/WelcomeWindowView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/IUColors.xaml" />
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml" />
+                <ResourceDictionary Source="/Styles/TextBlockStyle.xaml" />
+                <ResourceDictionary Source="/Styles/BorderStyle.xaml" />
+                <ResourceDictionary Source="/Styles/LinkStyle.xaml" />
+                <ResourceDictionary Source="/Styles/ScrollBarStyle.xaml" />
+                <ResourceDictionary Source="/Styles/CheckBoxStyle.xaml" />
+                <ResourceDictionary Source="/Styles/ToggleButtonStyle.xaml" />
+                <ResourceDictionary Source="/Styles/ToolTipStyle.xaml" />
+                <ResourceDictionary Source="/Styles/ComboBoxStyle.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

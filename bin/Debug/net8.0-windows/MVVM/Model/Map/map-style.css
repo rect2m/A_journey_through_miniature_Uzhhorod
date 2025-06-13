@@ -1,0 +1,229 @@
+﻿/* === Меню вибору карти === */
+.leaflet-control-layers {
+    background: rgba(21, 53, 71, 0.8) !important;
+    color: #E0E1F1 !important;
+    border-radius: 8px !important;
+    padding: 5px 8px !important;
+    font-family: Arial, sans-serif;
+    font-size: 12px !important;
+}
+
+/* Ховаємо стандартні радіокнопки */
+.leaflet-control-layers-list input[type="radio"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #008CFF; /* Синя обводка */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+    /* Стиль для вибраного пункту */
+    .leaflet-control-layers-list input[type="radio"]:checked {
+        background: #008CFF; /* Заповнення синім кольором */
+    }
+
+/* Зміна стилю міток */
+.leaflet-control-layers label {
+    font-size: 12px !important;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Відступ між радіокнопкою та текстом */
+    cursor: pointer;
+}
+
+/* Ефект при наведенні */
+.leaflet-control-layers-list input[type="radio"]:hover {
+    border-color: #00BFFF;
+}
+
+/* === Кнопки масштабування === */
+.leaflet-control-zoom {
+    background: rgba(21, 53, 71, 0.6) !important; /* Напівпрозорий темний фон */
+    border-radius: 8px !important;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 140, 255, 0.4); /* Світло-блакитна тінь */
+}
+
+ /* Кнопки (+ і -) */
+ .leaflet-control-zoom a {
+     background: rgba(21, 53, 71, 0.5) !important; /* Напівпрозорий фон */
+     color: #E0E1F1 !important; /* Білий текст */
+     font-size: 18px !important;
+     font-weight: bold !important;
+     width: 42px !important;
+     height: 42px !important;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border: none !important;
+     transition: background 0.3s ease-in-out, transform 0.2s ease;
+     border-radius: 0 !important;
+ }
+
+ /* Ефект наведення */
+ .leaflet-control-zoom a:hover {
+     background: rgba(0, 140, 255, 0.6) !important; /* Прозорий синій фон при наведенні */
+     transform: scale(1.05); /* Легке збільшення */
+ }
+
+ /* Ефект натискання */
+ .leaflet-control-zoom a:active {
+     background: rgba(0, 170, 255, 0.8) !important; /* Яскравий синій */
+     transform: scale(0.95);
+ }
+
+ /* Відділяємо кнопку "-" від "+" */
+ .leaflet-control-zoom a:first-child {
+     border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+ }
+
+/* Змінюємо фон popup */
+.leaflet-popup-content-wrapper {
+    background: rgba(21, 53, 71, 0.9) !important; /* Темний фон, як у меню */
+    color: #E0E1F1 !important; /* Світлий текст */
+    border-radius: 10px !important;
+    box-shadow: 0px 0px 10px rgba(0, 140, 255, 0.4); /* Блакитна тінь */
+}
+
+/* Стиль заголовка popup */
+.leaflet-popup-content {
+    font-size: 16px !important;
+    text-align: center;
+}
+
+/* Оновлюємо стиль кнопки закриття popup */
+.leaflet-popup-close-button {
+    color: #E0E1F1 !important; /* Білий колір */
+    font-size: 18px !important;
+}
+
+.leaflet-popup-tip {
+    background: rgba(21, 53, 71, 0.9) !important; /* Змінюємо колір стрілки */
+}
+
+/* Заокруглюємо карту */
+#map {
+    border-radius: 10px; /* Регулюй значення для більшого або меншого заокруглення */
+
+}
+
+
+/* 🔹 Стиль випадаючого списку пошуку */
+#search-results {
+    position: absolute;
+    top: 10px; /* Відстань від поля пошуку */
+    left: 10px;
+    width: 220px;
+    background: rgba(21, 53, 71, 0.85); /* Напівпрозорий темно-синій фон */
+    border-radius: 8px;
+    border: 1px solid rgba(0, 140, 255, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    z-index: 1000;
+    display: none; /* Прихований за замовчуванням */
+}
+
+/* 🔹 Окремий елемент у списку */
+.search-item {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+    /* 🔹 Останній елемент без нижньої межі */
+    .search-item:last-child {
+        border-bottom: none;
+    }
+
+    /* 🔹 Наведення на елемент */
+    .search-item:hover {
+        background: rgba(0, 140, 255, 0.5);
+    }
+
+
+/* 🔁 Вимикаємо прокрутку на контейнері */
+.leaflet-routing-container {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 260px;
+    background: rgba(21, 53, 71, 0.85);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 140, 255, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+    padding: 10px;
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* Головний контейнер – без прокрутки */
+.leaflet-routing-container {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    width: 260px;
+    background: rgba(21, 53, 71, 0.85);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 140, 255, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+    padding: 10px;
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* Прокрутка лише в альтернативному контейнері */
+.leaflet-routing-alternatives-container {
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+/* Заголовки */
+.leaflet-routing-container h2,
+.leaflet-routing-container .leaflet-routing-alt h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+    color: white;
+}
+
+/* Альтернативні маршрути – без підсвічування */
+.leaflet-routing-container .leaflet-routing-alt:hover {
+    background: none !important;
+    cursor: default;
+}
+
+/* 🔥 Пункти маршруту – прибираємо підсвічування при наведенні */
+.leaflet-routing-instruction:hover {
+    background: none !important;
+    color: inherit;
+    box-shadow: none;
+}
+
+/* Стиль стрілочок (іконок) */
+.leaflet-routing-container .leaflet-routing-icon {
+    filter: invert(100%);
+}
+
+
+
+
+
+

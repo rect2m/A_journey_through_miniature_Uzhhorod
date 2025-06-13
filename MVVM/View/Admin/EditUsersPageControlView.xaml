@@ -1,0 +1,263 @@
+﻿<UserControl
+    x:Class="A_journey_through_miniature_Uzhhorod.MVVM.View.Admin.EditUsersPageControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+    xmlns:loc="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="600"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+
+    <Border
+        Margin="20"
+        Padding="10"
+        Background="{StaticResource panelOverColor}"
+        BorderBrush="{StaticResource color11}"
+        BorderThickness="2"
+        CornerRadius="10">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <!--  Заголовки  -->
+                <RowDefinition Height="Auto" />
+
+                <RowDefinition Height="*" />
+                <!--  Контент  -->
+                <RowDefinition Height="Auto" />
+                <!--  Пагінація  -->
+                <RowDefinition Height="Auto" />
+                <!--  Порожнє повідомлення  -->
+            </Grid.RowDefinitions>
+
+            <!--  Заголовки колонок  -->
+            <Grid Grid.Row="1" Margin="0,10,0,-10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{loc:Loc Username}" />
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{loc:Loc Role}" />
+                <TextBlock
+                    Grid.Column="2"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{loc:Loc Status}" />
+                <TextBlock
+                    Grid.Column="3"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{loc:Loc Actions}" />
+            </Grid>
+
+            <StackPanel
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <fa:IconImage
+                    Width="20"
+                    Height="20"
+                    Margin="40,0,10,0"
+                    Foreground="{StaticResource titleColor2}"
+                    Icon="Search" />
+
+                <TextBox
+                    x:Name="TextBoxSearch"
+                    Width="200"
+                    Height="28"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="DarkGray"
+                    BorderThickness="0,0,0,2"
+                    CaretBrush="LightGray"
+                    FontFamily="Montserrat"
+                    FontSize="13"
+                    FontWeight="Medium"
+                    Foreground="White"
+                    Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="{loc:Loc TextBoxSearchToolTip}" />
+            </StackPanel>
+
+            <ComboBox
+                Grid.Row="0"
+                Width="200"
+                Margin="0,5,5,5"
+                HorizontalAlignment="Right"
+                ItemsSource="{Binding UserFilters}"
+                SelectedItem="{Binding SelectedFilter, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource ComboBoxStyle}" />
+
+
+            <!--  Список користувачів  -->
+            <ScrollViewer
+                Grid.Row="2"
+                Margin="0,10,0,0"
+                Padding="10"
+                VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Users}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Margin="7"
+                                Padding="0,10,0,10"
+                                BorderBrush="{StaticResource color11}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="18"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding Username}" />
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="18"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding Role}" />
+
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Margin="5,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="18"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding Status}" />
+
+                                    <StackPanel
+                                        Grid.Column="3"
+                                        Margin="5,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <Button
+                                            Margin="5,0,0,0"
+                                            Command="{Binding DataContext.ChangeRoleCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource IconButton}"
+                                            Tag="{StaticResource color11}"
+                                            ToolTip="{loc:Loc ChangeRole}">
+                                            <fa:IconImage Icon="ArrowsRotate" Style="{StaticResource iconButtonIcon}" />
+                                        </Button>
+                                        <Button
+                                            Margin="5,0,0,0"
+                                            Command="{Binding DataContext.ToggleBlockCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource IconButton}"
+                                            Tag="{StaticResource color11}"
+                                            ToolTip="{loc:Loc ChangeStatus}">
+                                            <fa:IconImage Icon="Ban" Style="{StaticResource iconButtonIcon}" />
+                                        </Button>
+                                        <Button
+                                            Margin="5,0,0,0"
+                                            Command="{Binding DataContext.DeleteUserCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource IconButton}"
+                                            Tag="{StaticResource color11}"
+                                            ToolTip="{loc:Loc ChangeStatus}">
+                                            <fa:IconImage Icon="Trash" Style="{StaticResource iconButtonIcon}" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <!--  Пагінація  -->
+            <StackPanel
+                Grid.Row="3"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Command="{Binding PrevPageCommand}"
+                    Style="{StaticResource IconButton}"
+                    Tag="{StaticResource color11}"
+                    ToolTip="{loc:Loc PrewPageToolTip}">
+                    <fa:IconImage Icon="AngleLeft" Style="{StaticResource iconButtonIcon}" />
+                </Button>
+                <TextBlock
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{Binding CurrentPage}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource titleColor1}"
+                    Text=" / " />
+                <TextBlock
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource titleColor1}"
+                    Text="{Binding TotalPages}" />
+                <Button
+                    Command="{Binding NextPageCommand}"
+                    Style="{StaticResource IconButton}"
+                    Tag="{StaticResource color11}"
+                    ToolTip="{loc:Loc NextPageToolTip}">
+                    <fa:IconImage Icon="AngleRight" Style="{StaticResource iconButtonIcon}" />
+                </Button>
+            </StackPanel>
+
+            <!--  Повідомлення про відсутність користувачів  -->
+            <TextBlock
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Foreground="{StaticResource titleColor1}"
+                Text="{loc:Loc NoUsers}">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Users.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>

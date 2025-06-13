@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ButtonExit" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="ButtonFavoriteToolTip" xml:space="preserve">
+    <value>Переглянути улюблені</value>
+  </data>
+  <data name="ButtonToProgram" xml:space="preserve">
+    <value>Перейти до застосунку</value>
+  </data>
+  <data name="HomeDateEvents" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="HomeTitleEvents" xml:space="preserve">
+    <value>Цікава подія:</value>
+  </data>
+  <data name="HomeTitleSculptures" xml:space="preserve">
+    <value>ПОПУЛЯРНІ МІНІАТЮРИ:</value>
+  </data>
+  <data name="MainLanguageToolTip" xml:space="preserve">
+    <value>Натисніть для зміни мови</value>
+  </data>
+  <data name="MainTextBlockUserName" xml:space="preserve">
+    <value>Натисніть щоб увійти</value>
+  </data>
+  <data name="Menu_title" xml:space="preserve">
+    <value>Мандрівка мініатюрним Ужгородом</value>
+  </data>
+  <data name="NextPageToolTip" xml:space="preserve">
+    <value>Наступна</value>
+  </data>
+  <data name="PrewPageToolTip" xml:space="preserve">
+    <value>Попередня</value>
+  </data>
+  <data name="RadioButtonAchievement" xml:space="preserve">
+    <value>Досягнення</value>
+  </data>
+  <data name="RadioButtonEvents" xml:space="preserve">
+    <value>Події</value>
+  </data>
+  <data name="RadioButtonFeedback" xml:space="preserve">
+    <value>Зворотній зв'язок</value>
+  </data>
+  <data name="RadioButtonHelp" xml:space="preserve">
+    <value>Допомога в користуванні</value>
+  </data>
+  <data name="RadioButtonMap" xml:space="preserve">
+    <value>Мапа розташування</value>
+  </data>
+  <data name="RadioButtonMiniatures" xml:space="preserve">
+    <value>Список скульптурок</value>
+  </data>
+  <data name="RadioButtonPersonalOffice" xml:space="preserve">
+    <value>Особистий кабінет</value>
+  </data>
+  <data name="RadioButtonQuest" xml:space="preserve">
+    <value>Квести</value>
+  </data>
+  <data name="RadioButton_Home" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="SculptureDetailOpen" xml:space="preserve">
+    <value>Натисніть щоб відкрити детальніше</value>
+  </data>
+  <data name="TextBoxSearchToolTip" xml:space="preserve">
+    <value>Для пошуку введіть назву</value>
+  </data>
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Мандрівка мініатюрним Ужгородом</value>
+  </data>
+  <data name="TotalMiniatures" xml:space="preserve">
+    <value>Загальна кількість скульптур:</value>
+  </data>
+  <data name="ButtonBackToolTip" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="ButtonAddFavoriteToolTip" xml:space="preserve">
+    <value>Додати або видалити з улюблених</value>
+  </data>
+  <data name="MiniatureTextBlockAddReview" xml:space="preserve">
+    <value>Ваш відгук:</value>
+  </data>
+  <data name="MiniatureButtonAddReview" xml:space="preserve">
+    <value>Залишити відгук</value>
+  </data>
+  <data name="MiniatureTextBlockReview" xml:space="preserve">
+    <value>Відгуки:</value>
+  </data>
+  <data name="Button3DModel" xml:space="preserve">
+    <value>Переглянути 3D Модель</value>
+  </data>
+  <data name="MiniatureTextBlockRate" xml:space="preserve">
+    <value>Оцініть скульптурку:</value>
+  </data>
+  <data name="TextBlockLatitude" xml:space="preserve">
+    <value>Широта:</value>
+  </data>
+  <data name="TextBlockLongitude" xml:space="preserve">
+    <value>Довгота:</value>
+  </data>
+  <data name="TextBlockReviewRate" xml:space="preserve">
+    <value>Оцінка: </value>
+  </data>
+  <data name="TextBlockKategoryFeedBack" xml:space="preserve">
+    <value>Оберіть категорію</value>
+  </data>
+  <data name="TextBlockMessageFeedBack" xml:space="preserve">
+    <value>Напишіть повідомлення</value>
+  </data>
+  <data name="TextBoxMessageFeedBackToolTip" xml:space="preserve">
+    <value>Будь-яке повідомлення</value>
+  </data>
+  <data name="ButtonSendFeedBack" xml:space="preserve">
+    <value>Надіслати</value>
+  </data>
+  <data name="FeedbackCategorySuggestion" xml:space="preserve">
+    <value>Пропозиція</value>
+  </data>
+  <data name="FeedbackCategoryError" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="FeedbackCategoryOther" xml:space="preserve">
+    <value>Інше</value>
+  </data>
+  <data name="FeedbackSelectCategory" xml:space="preserve">
+    <value> Оберіть категорію.</value>
+  </data>
+  <data name="FeedbackEnterMessage" xml:space="preserve">
+    <value>Введіть повідомлення.</value>
+  </data>
+  <data name="FeedbackSuccessMessage" xml:space="preserve">
+    <value>Дякуємо за ваш зворотній зв'язок!</value>
+  </data>
+  <data name="MiniatureTextBlockRating" xml:space="preserve">
+    <value>Рейтинг: </value>
+  </data>
+  <data name="TextBlockQuestScale" xml:space="preserve">
+    <value>Масштаб:</value>
+  </data>
+  <data name="TextBlockQuestCenter" xml:space="preserve">
+    <value>Відцентрувати</value>
+  </data>
+  <data name="TextBlockQuestDone" xml:space="preserve">
+    <value>Виконано</value>
+  </data>
+  <data name="TextBlockQuestInProcess" xml:space="preserve">
+    <value>У процесі</value>
+  </data>
+  <data name="TextBlockQuestBlocked" xml:space="preserve">
+    <value>Заблоковано</value>
+  </data>
+  <data name="Filter_All" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="Filter_Completed" xml:space="preserve">
+    <value>Виконані </value>
+  </data>
+  <data name="Filter_Incomplete" xml:space="preserve">
+    <value>Невиконані </value>
+  </data>
+  <data name="EventTextBoxSearchToolTip" xml:space="preserve">
+    <value>Для пошуку введіть назву або дату</value>
+  </data>
+  <data name="EventDate" xml:space="preserve">
+    <value>Дата події: </value>
+  </data>
+  <data name="RandomEventDate" xml:space="preserve">
+    <value>Дата: </value>
+  </data>
+  <data name="PersonalOfficeEditTitle" xml:space="preserve">
+    <value>Редагування даних</value>
+  </data>
+  <data name="PersonalOfficeInfoTitle" xml:space="preserve">
+    <value>Інформація</value>
+  </data>
+  <data name="AvatarButtonToolTip" xml:space="preserve">
+    <value>Натисніть для зміни аватару</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Iм'я користувача</value>
+  </data>
+  <data name="PersonalOfficeOldPassword" xml:space="preserve">
+    <value>Старий пароль</value>
+  </data>
+  <data name="PersonalOfficeNewPassword" xml:space="preserve">
+    <value>Новий пароль</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Електронна адреса</value>
+  </data>
+  <data name="PersonalOfficeButtonSave" xml:space="preserve">
+    <value>Зберегти зміни</value>
+  </data>
+  <data name="PersonalOfficeButtonLeave" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="PersonalOfficeButtonDelete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="PersonalOfficeYourReviews" xml:space="preserve">
+    <value>Ваші відгуки:</value>
+  </data>
+  <data name="PersonalOfficeButtonClearReviews" xml:space="preserve">
+    <value>Очистити всі</value>
+  </data>
+  <data name="PersonalOfficeClearReviewsToolTip" xml:space="preserve">
+    <value>Очистити відгуки</value>
+  </data>
+  <data name="PersonalOfficeTextBlockRate" xml:space="preserve">
+    <value>Оцінка: </value>
+  </data>
+  <data name="PersonalOfficeButtonDeleteReview" xml:space="preserve">
+    <value>Видалити відгук</value>
+  </data>
+  <data name="PersonalOfficeDontHaveReviews" xml:space="preserve">
+    <value>У вас ще немає відгуків</value>
+  </data>
+  <data name="PersonalOfficeTextBlockHistoryTitle" xml:space="preserve">
+    <value>Історія дій:</value>
+  </data>
+  <data name="PersonalOfficeButtonClearHistory" xml:space="preserve">
+    <value>Очистити все</value>
+  </data>
+  <data name="POButtonClearHistoryToolTip" xml:space="preserve">
+    <value>Очистити історію дій</value>
+  </data>
+  <data name="PersonalOfficeButtonDeleteRecord" xml:space="preserve">
+    <value>Видалити запис</value>
+  </data>
+  <data name="PersonalOfficeDontHaveHistory" xml:space="preserve">
+    <value>Історія дій ще порожня</value>
+  </data>
+  <data name="Filter_View" xml:space="preserve">
+    <value>Перегляд</value>
+  </data>
+  <data name="Filter_Rating" xml:space="preserve">
+    <value>Оцінювання</value>
+  </data>
+  <data name="Filter_Review" xml:space="preserve">
+    <value>Відгук</value>
+  </data>
+  <data name="Filter_Quest" xml:space="preserve">
+    <value>Квест</value>
+  </data>
+  <data name="Filter_Achievement" xml:space="preserve">
+    <value>Досягнення</value>
+  </data>
+  <data name="AuthorizationTitle" xml:space="preserve">
+    <value>Авторизація</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>УВІЙТИ</value>
+  </data>
+  <data name="DontHaveAcount" xml:space="preserve">
+    <value>Ще немає аккаунту?</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
+  <data name="ButtonRegistry" xml:space="preserve">
+    <value>РЕЄСТРАЦІЯ</value>
+  </data>
+  <data name="AlreadyHaveAnAccount" xml:space="preserve">
+    <value>Вже є аккаунт?</value>
+  </data>
+  <data name="MainMenu" xml:space="preserve">
+    <value>Головне меню</value>
+  </data>
+  <data name="EmailToolTip" xml:space="preserve">
+    <value>Приклад: ВашаАдреса@gmail.com</value>
+  </data>
+  <data name="PasswordToolTip" xml:space="preserve">
+    <value>Мінімум 8 символів. Принаймні одна велика англійська літера. Принаймні одна мала англійська літера.&amp;#x0a;Принаймні одна цифра. Принаймні один спеціальний символ.</value>
+  </data>
+  <data name="UsernameToolTip" xml:space="preserve">
+    <value>Літери або цифри</value>
+  </data>
+  <data name="FillAllFieldsMessage" xml:space="preserve">
+    <value>Будь ласка, заповніть усі поля!</value>
+  </data>
+  <data name="UsernameValidation" xml:space="preserve">
+    <value>Ім'я має мати від 3 до 20 символів і складатися з літер, цифр або '_'.</value>
+  </data>
+  <data name="PasswordValidation" xml:space="preserve">
+    <value>Пароль має бути не менше 6 символів, хоча б одну літеру та цифру.</value>
+  </data>
+  <data name="AuthSuccessful" xml:space="preserve">
+    <value>Авторизація успішна!</value>
+  </data>
+  <data name="UnfaithfulUsernameOrPassword" xml:space="preserve">
+    <value>Невірний нікнейм або пароль</value>
+  </data>
+  <data name="FillAllFields" xml:space="preserve">
+    <value>Будь ласка, заповніть усі поля!</value>
+  </data>
+  <data name="IncorrectEmailFormat" xml:space="preserve">
+    <value>Введено некоректний формат електронної пошти!</value>
+  </data>
+  <data name="RegSuccsesfully" xml:space="preserve">
+    <value>Реєстрація успішна!</value>
+  </data>
+  <data name="EmailAlredyExist" xml:space="preserve">
+    <value>Користувач із таким email вже існує.</value>
+  </data>
+  <data name="ErrorSendingMail" xml:space="preserve">
+    <value>Помилка надсилання листа: </value>
+  </data>
+  <data name="CodeSent" xml:space="preserve">
+    <value>Код підтвердження надіслано на</value>
+  </data>
+  <data name="InvalidCode" xml:space="preserve">
+    <value>Невірний код підтвердження! Реєстрацію скасовано.</value>
+  </data>
+  <data name="EnterCode" xml:space="preserve">
+    <value>Введіть код, надісланий на вашу електронну пошту:</value>
+  </data>
+  <data name="RemoveFavorite" xml:space="preserve">
+    <value>Скульптуру вилучено з улюблених.</value>
+  </data>
+  <data name="AddFavorite" xml:space="preserve">
+    <value>Скульптуру додано до улюблених.</value>
+  </data>
+  <data name="ChooseSculpture" xml:space="preserve">
+    <value>Виберіть скульптурку!</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Користувача не знайдено!</value>
+  </data>
+  <data name="RatingUpdate" xml:space="preserve">
+    <value>Ваша оцінка оновлена до </value>
+  </data>
+  <data name="YourRating" xml:space="preserve">
+    <value>Ваша оцінка </value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value> збережена!</value>
+  </data>
+  <data name="EnterComment" xml:space="preserve">
+    <value>Введіть коментар!</value>
+  </data>
+  <data name="ReviewSaved" xml:space="preserve">
+    <value>Ваш відгук збережено!</value>
+  </data>
+  <data name="ModelAnavaible" xml:space="preserve">
+    <value>3D-модель для цієї скульптурки відсутня.</value>
+  </data>
+  <data name="ClearHistory" xml:space="preserve">
+    <value>Ви впевнені, що хочете очистити історію?</value>
+  </data>
+  <data name="ClearRecord" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити запис?</value>
+  </data>
+  <data name="RecordRemoved" xml:space="preserve">
+    <value>Запис видалено!</value>
+  </data>
+  <data name="DeleteReview" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити відгук?</value>
+  </data>
+  <data name="ReviewRemoved" xml:space="preserve">
+    <value>Відгук видалено!</value>
+  </data>
+  <data name="RemoveReviews" xml:space="preserve">
+    <value>Ви впевнені, що хочете очистити відгуки?</value>
+  </data>
+  <data name="AllReviewsRemoved" xml:space="preserve">
+    <value>Усі відгуки успішно видалено!</value>
+  </data>
+  <data name="UsernameTaken" xml:space="preserve">
+    <value>Це ім'я уже зайняте!</value>
+  </data>
+  <data name="IncorrectOldPassword" xml:space="preserve">
+    <value>Неправильний старий пароль!</value>
+  </data>
+  <data name="POInvalidCode" xml:space="preserve">
+    <value>Невірний код підтвердження! Зміни не збережено.</value>
+  </data>
+  <data name="EnterOldPassword" xml:space="preserve">
+    <value>Для зміни пароля введіть старий пароль!</value>
+  </data>
+  <data name="ProfileUpdated" xml:space="preserve">
+    <value>Профіль оновлено успішно!</value>
+  </data>
+  <data name="InvalidCodeDelete" xml:space="preserve">
+    <value>Невірний код підтвердження. Видалення скасовано.</value>
+  </data>
+  <data name="AccountDeleted" xml:space="preserve">
+    <value>Акаунт видалено успішно.</value>
+  </data>
+  <data name="ErrorAccountDelete" xml:space="preserve">
+    <value>❌ Помилка видалення акаунту.</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Перевірити</value>
+  </data>
+  <data name="UpdateMarkers" xml:space="preserve">
+    <value>Помилка оновлення маркерів: </value>
+  </data>
+  <data name="EasterEgg" xml:space="preserve">
+    <value>Ви знайшли секретного потужного випускника нашого коледжу</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Ви хочете вийти з аккаунту?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Так</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ні</value>
+  </data>
+  <data name="AccountDelete" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити свій акаунт?</value>
+  </data>
+  <data name="QuestionLogOut" xml:space="preserve">
+    <value>Ви впевнені, що хочете вийти з акаунту?</value>
+  </data>
+  <data name="RegOrLogProfile" xml:space="preserve">
+    <value>Спочатку зареєструйтесь або увійдіть у профіль.</value>
+  </data>
+  <data name="AnavaibleReviews" xml:space="preserve">
+    <value>Відгуків ще немає.</value>
+  </data>
+  <data name="From where" xml:space="preserve">
+    <value>Звідки</value>
+  </data>
+  <data name="ToWhere" xml:space="preserve">
+    <value>Куди</value>
+  </data>
+  <data name="ButtonRoute" xml:space="preserve">
+    <value>Прокласти маршрут</value>
+  </data>
+  <data name="ButtonClearRoute" xml:space="preserve">
+    <value>Очистити маршрут</value>
+  </data>
+  <data name="SelectBothSculptures" xml:space="preserve">
+    <value>Оберіть обидві мініатюри.</value>
+  </data>
+  <data name="MarkerError" xml:space="preserve">
+    <value>Помилка завантаження маркерів: </value>
+  </data>
+  <data name="RadioButtonEditSculpture" xml:space="preserve">
+    <value>Редагування скульптурок</value>
+  </data>
+  <data name="RadioButtonEditQuest" xml:space="preserve">
+    <value>Редагування квестів</value>
+  </data>
+  <data name="RadioButtonEditAchievment" xml:space="preserve">
+    <value>Редагування досягнень</value>
+  </data>
+  <data name="RadioButtonEditEvents" xml:space="preserve">
+    <value>Редагування подій</value>
+  </data>
+  <data name="RadioButtonEditUsers" xml:space="preserve">
+    <value>Користувачі</value>
+  </data>
+  <data name="RadioButtonEditHelp" xml:space="preserve">
+    <value>Редагування допомоги</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="ErrorWhileSaving" xml:space="preserve">
+    <value>Помилка при збереженні: </value>
+  </data>
+  <data name="FileSavedSuccessfully" xml:space="preserve">
+    <value>Файл збережено успішно! </value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+  <data name="ChangeRole" xml:space="preserve">
+    <value>Змінити роль</value>
+  </data>
+  <data name="ChangeStatus" xml:space="preserve">
+    <value>Змінити статус</value>
+  </data>
+  <data name="NoUsers" xml:space="preserve">
+    <value>Користувачів ще немає</value>
+  </data>
+  <data name="SculptureName" xml:space="preserve">
+    <value>Назва скульптурки</value>
+  </data>
+  <data name="SculptureDescription" xml:space="preserve">
+    <value>Опис скульптурки</value>
+  </data>
+  <data name="Change3DModel" xml:space="preserve">
+    <value>Змінити модель</value>
+  </data>
+  <data name="AddSculpture" xml:space="preserve">
+    <value>Додати скульптурку</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Збереження...</value>
+  </data>
+  <data name="ImageChange" xml:space="preserve">
+    <value>Натисніть, щоб змінити зображення</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Користувачі</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Відгуки</value>
+  </data>
+  <data name="Activities" xml:space="preserve">
+    <value>Активності</value>
+  </data>
+  <data name="Miniatures" xml:space="preserve">
+    <value>Мініатюри</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Заблоковані</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активні</value>
+  </data>
+  <data name="LatestMessages" xml:space="preserve">
+    <value>Останні повідомлення</value>
+  </data>
+  <data name="NoMessage" xml:space="preserve">
+    <value>Немає повідомлень</value>
+  </data>
+  <data name="AddEvent" xml:space="preserve">
+    <value>Додати подію</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="EventDelete" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити цю подію?</value>
+  </data>
+  <data name="EventsValidation" xml:space="preserve">
+    <value>Усі поля заголовку та опису обов'язкові для обох мов.</value>
+  </data>
+  <data name="EventsDate" xml:space="preserve">
+    <value>Виберіть дату події.</value>
+  </data>
+  <data name="EventSave" xml:space="preserve">
+    <value>Подію збережено успішно!</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Користувач</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категорія</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Повідомлення</value>
+  </data>
+  <data name="AdminResponse" xml:space="preserve">
+    <value>Відповідь адміністратора</value>
+  </data>
+  <data name="PersonalOfficeFeedbackTitle" xml:space="preserve">
+    <value>Ваші повідомлення</value>
+  </data>
+  <data name="PersonalOfficeButtonDeleteFeedback" xml:space="preserve">
+    <value>Натисніть щоб видалити</value>
+  </data>
+  <data name="PersonalOfficeDontHaveFeedbacks" xml:space="preserve">
+    <value>Ще немає повідомленнь</value>
+  </data>
+  <data name="DeleteFeedback" xml:space="preserve">
+    <value>Are you sure you want to delete the message?</value>
+  </data>
+  <data name="FeedbackRemoved" xml:space="preserve">
+    <value>Повідомлення видалено успішно</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>Історія</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Зворотній зв'язок</value>
+  </data>
+  <data name="AccountBlocked" xml:space="preserve">
+    <value>Ваш обліковий запис заблоковано.</value>
+  </data>
+</root>

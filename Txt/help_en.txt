@@ -1,0 +1,58 @@
+﻿
+🗺️ Page: Location Map
+To find a sculpture, type its name in the search field.
+Select the desired sculpture from the list of results.
+Click on its marker on the map to view information.
+You can switch between map views (e.g., satellite or standard).
+
+📋 Page: Sculpture List
+Use the search by entering the sculpture name – the list updates automatically.
+Sorting by various criteria is available.
+The total number of sculptures is displayed.
+To view only favorites, click the ❤️ button (click again to disable the filter).
+Click on a sculpture card to view more details.
+
+🗿 Page: Sculpture View
+Full information is displayed: photo, geolocation, rating, and reviews.
+A 3D model view is available.
+To rate, click the desired number of stars (1–5).
+Write your review in the corresponding field.
+To add to favorites, click ❤️.
+To go back, click the arrow button.
+
+✉️ Page: Feedback
+Choose a query category.
+Enter your message in the provided field.
+Click the send button.
+
+🧩 Page: Quests
+A quest tree with progress is displayed.
+Quests must be completed in sequence.
+Hover over a quest to see additional information.
+The tree can be moved and zoomed.
+To center the view, click the cross-arrow button.
+
+🏆 Page: Achievements
+All user achievements are displayed.
+There is a filter to view:
+All
+Completed
+Incomplete
+
+👤 Page: Profile
+View submitted reviews and activity history.
+Sorting of records is available.
+To delete a specific record, click the 🗑️ button on the item.
+To clear the entire history, click the dedicated button.
+You can change your username.
+
+To change your password:
+Enter the old and new password.
+A confirmation code will be sent to your email.
+Enter the code in the appropriate field.
+To change your avatar, click it and choose a new file from your device.
+
+🎉 Page: Events
+Current events related to sculptures are displayed.
+Sorting is available (from oldest to newest).
+To search, enter a keyword – the event list updates automatically.

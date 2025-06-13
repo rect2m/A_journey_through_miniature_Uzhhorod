@@ -1,0 +1,202 @@
+﻿<UserControl
+    x:Class="A_journey_through_miniature_Uzhhorod.MVVM.View.Admin.AdminHomePageControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+    xmlns:live="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:loc="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="600"
+    d:DesignWidth="1000"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  📊 Картки  -->
+        <ItemsControl
+            Grid.Row="1"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Center"
+            ItemsSource="{Binding InfoCards}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="0" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Width="220"
+                        Margin="10"
+                        Padding="15"
+                        Background="{StaticResource panelOverColor}"
+                        BorderBrush="{StaticResource color11}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+                        <DockPanel VerticalAlignment="Center">
+                            <fa:IconImage
+                                Width="30"
+                                Height="30"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Left"
+                                Foreground="White"
+                                Icon="{Binding Icon}" />
+                            <StackPanel>
+                                <TextBlock
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    Text="{Binding Title}" />
+                                <TextBlock
+                                    FontSize="18"
+                                    FontWeight="SemiBold"
+                                    Foreground="White"
+                                    Text="{Binding Value}" />
+
+                            </StackPanel>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!--  📈 Графіки  -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <live:PieChart
+                Grid.Column="0"
+                MaxWidth="600"
+                MaxHeight="600"
+                LegendPosition="Bottom"
+                Series="{Binding PieSeries}" />
+
+            <Border
+                Grid.Column="1"
+                MaxHeight="600"
+                Margin="20"
+                Padding="10"
+                Background="{StaticResource panelOverColor}"
+                BorderBrush="{StaticResource color11}"
+                BorderThickness="1"
+                CornerRadius="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Grid.Row="0"
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="{loc:Loc LatestMessages}" />
+
+                    <TextBlock
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="14"
+                        FontStyle="Italic"
+                        Foreground="Gray"
+                        Text="{loc:Loc NoMessage}"
+                        Visibility="{Binding IsFeedbackEmpty, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                    <ScrollViewer
+                        Grid.Row="1"
+                        MaxHeight="600"
+                        Margin="0,5,0,0"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto">
+                        <!--  нове  -->
+                        <ItemsControl ItemsSource="{Binding FeedbackEntries}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                    <!--  забезпечує вертикальне розташування  -->
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        Margin="0,0,0,10"
+                                        Padding="10"
+                                        Background="Transparent"
+                                        BorderBrush="{StaticResource color11}"
+                                        BorderThickness="1"
+                                        CornerRadius="10">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <DockPanel Grid.Row="0" Margin="0,0,0,5">
+
+                                                <Ellipse Width="24" Height="24" Margin="0,-2,0,0">
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush ImageSource="{Binding AvatarImage}" Stretch="UniformToFill" />
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+
+                                                <TextBlock
+                                                    Margin="5,0,0,0"
+                                                    FontWeight="Bold"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding Username}" />
+                                                <TextBlock
+                                                    Margin="10,0,0,0"
+                                                    HorizontalAlignment="Right"
+                                                    DockPanel.Dock="Right"
+                                                    FontSize="11"
+                                                    Foreground="{StaticResource titleColor1}"
+                                                    Text="{Binding Timestamp}" />
+                                            </DockPanel>
+
+                                            <TextBlock
+                                                Grid.Row="1"
+                                                Margin="0,0,0,4"
+                                                FontSize="14"
+                                                FontWeight="SemiBold"
+                                                Foreground="White"
+                                                Text="{Binding Title}" />
+
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                MaxHeight="60"
+                                                FontSize="13"
+                                                Foreground="{StaticResource titleColor1}"
+                                                Text="{Binding Message}"
+                                                TextTrimming="CharacterEllipsis"
+                                                TextWrapping="Wrap" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

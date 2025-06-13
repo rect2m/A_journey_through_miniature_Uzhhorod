@@ -1,0 +1,392 @@
+﻿<UserControl
+    x:Class="A_journey_through_miniature_Uzhhorod.MVVM.View.HomePageControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="800"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock
+                        Margin="10,20,0,10"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource titleColor1}"
+                        Text="{loc:Loc HomeTitleEvents}" />
+                    <Border
+                        Margin="10"
+                        Padding="10"
+                        Background="{StaticResource panelOverColor}"
+                        BorderBrush="{StaticResource color11}"
+                        BorderThickness="2"
+                        CornerRadius="10">
+                        <StackPanel>
+                            <TextBlock
+                                FontSize="22"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource titleColor1}"
+                                Text="{Binding RandomEvent.Title}" />
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="20"
+                                    Foreground="{StaticResource titleColor1}"
+                                    Text="{loc:Loc RandomEventDate}" />
+                                <TextBlock
+                                    FontSize="20"
+                                    Foreground="{StaticResource titleColor1}"
+                                    Text="{Binding RandomEvent.EventDate}" />
+                            </StackPanel>
+                            <TextBlock
+                                FontSize="20"
+                                Foreground="{StaticResource titleColor1}"
+                                Text="{Binding RandomEvent.Description}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <Border
+                    Grid.Row="1"
+                    Margin="10"
+                    Padding="10"
+                    Background="{StaticResource panelOverColor}"
+                    BorderBrush="{StaticResource color11}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <Grid>
+                        <Ellipse
+                            Width="150"
+                            Height="150"
+                            Margin="0,42,-98,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Opacity="0.3">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset="0.2" Color="Goldenrod" />
+                                    <GradientStop Offset="1" Color="Transparent" />
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Polygon
+                            Margin="0,-40,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Fill="White"
+                            Opacity="0.04"
+                            Points="50,120 250,150 100,300" />
+                        <Polygon
+                            Margin="0,170,180,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Fill="White"
+                            Opacity="0.04"
+                            Points="80,80 350,250 100,400" />
+
+                        <TextBlock
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource titleColor1}"
+                            Text="{loc:Loc HomeTitleSculptures}" />
+
+                        <Viewbox
+                            MaxWidth="1000"
+                            MaxHeight="700"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Stretch="Uniform">
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    Grid.ColumnSpan="3"
+                                    Width="900"
+                                    Height="80"
+                                    Margin="0,0,0,-10"
+                                    VerticalAlignment="Bottom"
+                                    CornerRadius="10">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0.3">
+                                            <GradientStop Offset="0.0" Color="{StaticResource colorThirdPlace}" />
+                                            <GradientStop Offset="0.5" Color="{StaticResource colorFirstPlace}" />
+                                            <GradientStop Offset="1.0" Color="{StaticResource colorSecondPlace}" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+
+                                <!--  🥉 3 місце  -->
+                                <StackPanel
+                                    Grid.Column="0"
+                                    Margin="0,0,0,70"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom">
+                                    <Button
+                                        Padding="0"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Click="MiniatureButton_Click"
+                                        Style="{StaticResource NoHighlightButtonStyle}"
+                                        Tag="{Binding TopRatedMiniatures[2]}">
+                                        <Image
+                                            Width="200"
+                                            Height="180"
+                                            Margin="15,0,0,-10"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            Source="{Binding TopRatedMiniatures[2].ImageSource}"
+                                            Stretch="Fill">
+                                            <Image.Clip>
+                                                <RectangleGeometry
+                                                    RadiusX="10"
+                                                    RadiusY="10"
+                                                    Rect="0,0,185,150" />
+                                            </Image.Clip>
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </Image.RenderTransform>
+                                            <Image.Triggers>
+                                                <EventTrigger RoutedEvent="MouseEnter">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                To="1.1"
+                                                                Duration="0:0:0.2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                To="1.1"
+                                                                Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                                <EventTrigger RoutedEvent="MouseLeave">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                To="1"
+                                                                Duration="0:0:0.2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                To="1"
+                                                                Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0,0,0,10"
+                                        FontSize="16"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding TopRatedMiniatures[2].Name}"
+                                        TextAlignment="Center" />
+                                    <Border
+                                        Width="200"
+                                        Height="60"
+                                        Background="{StaticResource color4}"
+                                        CornerRadius="10,10,0,0">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="20"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            Text="3" />
+                                    </Border>
+                                </StackPanel>
+
+                                <!--  🥇 1 місце  -->
+                                <StackPanel
+                                    Grid.Column="1"
+                                    Margin="0,0,0,70"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom">
+                                    <Button
+                                        Padding="0"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Click="MiniatureButton_Click"
+                                        Style="{StaticResource NoHighlightButtonStyle}"
+                                        Tag="{Binding TopRatedMiniatures[0]}">
+                                        <Image
+                                            Width="220"
+                                            Height="200"
+                                            Margin="15,0,0,-10"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            Source="{Binding TopRatedMiniatures[0].ImageSource}"
+                                            Stretch="Fill">
+                                            <Image.Clip>
+                                                <RectangleGeometry
+                                                    RadiusX="10"
+                                                    RadiusY="10"
+                                                    Rect="0,0,205,170" />
+                                            </Image.Clip>
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </Image.RenderTransform>
+                                            <Image.Triggers>
+                                                <EventTrigger RoutedEvent="MouseEnter">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                To="1.1"
+                                                                Duration="0:0:0.2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                To="1.1"
+                                                                Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                                <EventTrigger RoutedEvent="MouseLeave">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                To="1"
+                                                                Duration="0:0:0.2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                To="1"
+                                                                Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0,0,0,10"
+                                        FontSize="16"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding TopRatedMiniatures[0].Name}"
+                                        TextAlignment="Center" />
+                                    <Border
+                                        Width="220"
+                                        Height="130"
+                                        Background="{StaticResource color6}"
+                                        CornerRadius="10,10,0,0">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="22"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            Text="1" />
+                                    </Border>
+                                </StackPanel>
+
+                                <!--  🥈 2 місце  -->
+                                <StackPanel
+                                    Grid.Column="2"
+                                    Margin="0,0,0,70"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom">
+                                    <Button
+                                        Padding="0"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Click="MiniatureButton_Click"
+                                        Style="{StaticResource NoHighlightButtonStyle}"
+                                        Tag="{Binding TopRatedMiniatures[1]}">
+                                        <Image
+                                            Width="200"
+                                            Height="180"
+                                            Margin="15,0,0,-10"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            Source="{Binding TopRatedMiniatures[1].ImageSource}"
+                                            Stretch="Fill">
+                                            <Image.Clip>
+                                                <RectangleGeometry
+                                                    RadiusX="10"
+                                                    RadiusY="10"
+                                                    Rect="0,0,185,150" />
+                                            </Image.Clip>
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </Image.RenderTransform>
+                                            <Image.Triggers>
+                                                <EventTrigger RoutedEvent="MouseEnter">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                To="1.1"
+                                                                Duration="0:0:0.2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                To="1.1"
+                                                                Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                                <EventTrigger RoutedEvent="MouseLeave">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                To="1"
+                                                                Duration="0:0:0.2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                To="1"
+                                                                Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+                                    </Button>
+                                    <TextBlock
+                                        Margin="0,0,0,10"
+                                        FontSize="16"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding TopRatedMiniatures[1].Name}"
+                                        TextAlignment="Center" />
+                                    <Border
+                                        Width="200"
+                                        Height="90"
+                                        Background="{StaticResource color3}"
+                                        CornerRadius="10,10,0,0">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="20"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            Text="2" />
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </Viewbox>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

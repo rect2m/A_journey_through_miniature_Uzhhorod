@@ -1,0 +1,185 @@
+﻿<!-- Map.html with routing support and route clearing added -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>Мапа</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="./map-style.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+</head>
+<body style="margin:0;">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+    <div id="search-results"></div>
+
+    <script>
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        });
+
+        var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
+
+        var googleLabels = L.tileLayer('http://{s}.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            opacity: 0.8
+        });
+
+        var googleHybrid = L.layerGroup([googleSat, googleLabels]);
+
+        var map = L.map('map', {
+            center: [48.621025, 22.287883],
+            zoom: 14,
+            layers: [googleHybrid]
+        });
+
+        var customIcon = L.icon({
+            iconUrl: 'marker.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -30]
+        });
+
+        var baseMaps = {};
+        var layersControl = null;
+
+        function updateBaseMapLabels(labels) {
+            baseMaps = {
+                [labels.OSM]: osm,
+                [labels.GoogleSat]: googleSat,
+                [labels.GoogleHybrid]: googleHybrid
+            };
+
+            if (layersControl) {
+                map.removeControl(layersControl);
+            }
+
+            layersControl = L.control.layers(baseMaps).addTo(map);
+        }
+
+        updateBaseMapLabels({
+            OSM: "🗌️ Загальна карта (OSM)",
+            GoogleSat: "🚁️ Супутникова карта (Google)",
+            GoogleHybrid: "🚁️📍 Супутникова карта + Вулиці"
+        });
+
+        var markers = {};
+        var routingControl = null;
+        var searchResultsBox = document.getElementById("search-results");
+
+        function addMarker(lat, lon, title, imageUrl) {
+            var lowerTitle = title.toLowerCase();
+            if (markers[lowerTitle]) map.removeLayer(markers[lowerTitle]);
+
+            var imagePath = imageUrl; 
+            var popupContent = `<div style="text-align: center;"><strong>${title}</strong><br><img src="${imagePath}" style="width: 150px; border-radius: 8px; margin-top: 5px;"></div>`;
+
+            var marker = L.marker([lat, lon], { icon: customIcon }).addTo(map).bindPopup(popupContent);
+            markers[lowerTitle] = marker;
+        }
+
+
+        function buildRouteBetween(nameA, nameB) {
+            const markerA = markers[nameA.toLowerCase()];
+            const markerB = markers[nameB.toLowerCase()];
+
+            if (!markerA || !markerB) {
+                alert("Один або обидва маркери не знайдено.");
+                return;
+            }
+
+            if (routingControl) {
+                map.removeControl(routingControl);
+            }
+
+            routingControl = L.Routing.control({
+                waypoints: [
+                    markerA.getLatLng(),
+                    markerB.getLatLng()
+                ],
+                routeWhileDragging: true,
+                show: true,
+                createMarker: function () { return null; }
+            }).addTo(map);
+        }
+
+        function clearRoute() {
+            if (routingControl) {
+                map.removeControl(routingControl);
+                routingControl = null;
+            }
+        }
+
+        function clearAllMarkers() {
+            Object.values(markers).forEach(marker => map.removeLayer(marker));
+            markers = {};
+        }
+
+        function replaceMarkers(newMarkers) {
+            clearAllMarkers();
+            newMarkers.forEach(m => {
+                addMarker(parseFloat(m.latitude), parseFloat(m.longitude), m.name, m.imageUrl);
+            });
+        }
+
+        function updateSearchResults(filteredMarkers) {
+            searchResultsBox.innerHTML = "";
+            if (filteredMarkers.length > 0) {
+                searchResultsBox.style.display = "block";
+                filteredMarkers.forEach(name => {
+                    let item = document.createElement("div");
+                    item.className = "search-item";
+                    item.innerText = name;
+                    item.onclick = function () {
+                        searchMarker(name);
+                        searchResultsBox.style.display = "none";
+                        window.chrome.webview.postMessage("clear-search");
+                    };
+                    searchResultsBox.appendChild(item);
+                });
+            } else {
+                searchResultsBox.style.display = "none";
+            }
+        }
+
+        function searchMarker(query) {
+            var lowerQuery = query.trim().toLowerCase();
+            if (!lowerQuery) return;
+
+            let foundMarkers = Object.keys(markers).filter(name => name.includes(lowerQuery));
+            if (foundMarkers.length === 1) {
+                Object.values(markers).forEach(marker => marker.closePopup());
+                let marker = markers[foundMarkers[0]];
+                map.setView(marker.getLatLng(), 17);
+                marker.openPopup();
+            }
+        }
+
+        function activateEasterEgg() {
+            let lat = 48.69686619635279;
+            let lon = 21.23408075161125;
+            let title = "ПРОГРАМАТОР МАКСИМ";
+            let imageUrl = "https://minisculptures.blob.core.windows.net/images/secret.jpg";
+
+            if (markers["easter-egg"]) map.removeLayer(markers["easter-egg"]);
+
+            var popupContent = `<div style="text-align: center;"><strong>${title}</strong><br><img src="${imageUrl}" style="width: 150px; border-radius: 8px; margin-top: 5px;"></div>`;
+
+            var marker = L.marker([lat, lon], { icon: customIcon }).addTo(map)
+                .bindPopup(popupContent).openPopup();
+
+            markers["easter-egg"] = marker;
+            map.setView([lat, lon], 17);
+
+            window.chrome.webview.postMessage("easter-egg-activated");
+        }
+    </script>
+
+    <script src="./markers.js"></script>
+</body>
+</html>

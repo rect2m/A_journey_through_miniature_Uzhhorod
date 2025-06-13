@@ -1,0 +1,174 @@
+﻿<UserControl
+    x:Class="A_journey_through_miniature_Uzhhorod.MVVM.View.Admin.EditFeedbackPageControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+    xmlns:loc="clr-namespace:A_journey_through_miniature_Uzhhorod.MVVM.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="600"
+    d:DesignWidth="1000"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <conv:NullToBoolConverter x:Key="NullToBoolConverter" />
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <TextBlock
+            Margin="0,30,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16"
+            FontWeight="SemiBold"
+            Foreground="Gray"
+            Text="{loc:Loc NoMessage}"
+            Visibility="{Binding Feedbacks.Count, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Feedbacks}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!--  Контекст: FeedbackItemViewModel  -->
+                        <Border
+                            Margin="0,0,0,15"
+                            Padding="15"
+                            Background="{StaticResource panelOverColor}"
+                            BorderBrush="{StaticResource color11}"
+                            BorderThickness="1"
+                            CornerRadius="12">
+                            <StackPanel>
+
+                                <!--  🔹 Header  -->
+                                <TextBlock
+                                    Margin="0,5,0,2"
+                                    FontFamily="Montserrat"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="DarkGray"
+                                    Text="{loc:Loc User}" />
+                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                    <Ellipse
+                                        Width="27"
+                                        Height="27"
+                                        Margin="0,-5,0,0">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="{Binding AvatarImage}" Stretch="UniformToFill" />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+
+                                    <TextBlock
+                                        Margin="5,-3,0,0"
+                                        FontSize="15"
+                                        FontWeight="SemiBold"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding UserName}" />
+                                    <TextBlock
+                                        Margin="5,0,0,0"
+                                        DockPanel.Dock="Right"
+                                        FontSize="12"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding Feedback.SentAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}" />
+                                </StackPanel>
+
+                                <!--  🔹 Email  -->
+                                <TextBlock
+                                    Margin="0,5,0,5"
+                                    FontSize="13"
+                                    Foreground="{StaticResource titleColor1}"
+                                    Text="{Binding Feedback.Email}" />
+
+                                <!--  🔹 Category  -->
+                                <TextBlock
+                                    Margin="0,5,0,0"
+                                    FontFamily="Montserrat"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="DarkGray"
+                                    Text="{loc:Loc Category}" />
+                                <TextBlock
+                                    Margin="0,2,0,5"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Foreground="{Binding CategoryBrush}"
+                                    Text="{Binding Feedback.Category}" />
+                                <!--  ✅ без Feedback.  -->
+
+                                <!--  🔹 Message  -->
+                                <TextBlock
+                                    Margin="0,5,0,0"
+                                    FontFamily="Montserrat"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="DarkGray"
+                                    Text="{loc:Loc Message}" />
+                                <TextBlock
+                                    Margin="0,2,0,5"
+                                    FontSize="16"
+                                    Foreground="{StaticResource titleColor1}"
+                                    Text="{Binding Feedback.Message}"
+                                    TextWrapping="Wrap" />
+
+                                <!--  🔹 Admin Response  -->
+                                <Expander
+                                    Margin="0,10,0,0"
+                                    Background="Transparent"
+                                    FontSize="13"
+                                    FontWeight="Bold"
+                                    Foreground="{StaticResource titleColor1}"
+                                    Header="{loc:Loc AdminResponse}"
+                                    Visibility="{Binding Feedback.AdminResponse, Converter={StaticResource NullToVisibilityConverter}}">
+                                    <TextBlock
+                                        Margin="5,7,0,0"
+                                        FontSize="13"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding Feedback.AdminResponse}"
+                                        TextWrapping="Wrap" />
+                                </Expander>
+
+                                <!--  🔹 Reply  -->
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox
+                                        Grid.Column="0"
+                                        Padding="5"
+                                        VerticalAlignment="Center"
+                                        AcceptsReturn="True"
+                                        Background="Transparent"
+                                        BorderBrush="{StaticResource color11}"
+                                        BorderThickness="0,0,0,2"
+                                        FontSize="13"
+                                        Foreground="{StaticResource titleColor1}"
+                                        Text="{Binding AdminReplyText, UpdateSourceTrigger=PropertyChanged}"
+                                        TextWrapping="Wrap"
+                                        VerticalScrollBarVisibility="Auto" />
+                                    <Button
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        HorizontalAlignment="Left"
+                                        Command="{Binding SendReplyCommand}"
+                                        Style="{StaticResource IconButton}"
+                                        Tag="{StaticResource color11}">
+                                        <fa:IconImage Icon="PaperPlane" Style="{StaticResource iconButtonIcon}" />
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
